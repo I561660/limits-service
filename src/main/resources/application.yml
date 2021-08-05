@@ -1,0 +1,28 @@
+# HTTP Config 
+server:
+  port: 1214
+  
+# Spring Config
+spring:
+  application:
+    name: limit-service
+  config:
+    import: optional:configserver:http://localhost:8888
+  profiles:
+    active:
+    - qa
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+   
+   
+    
+# Spring Actuator Config
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - refresh
